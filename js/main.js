@@ -2,6 +2,7 @@ var panel_0 = document.getElementById("panel_0");
 var panel_0__img_1 = document.getElementById("panel_0__img_1");
 var panel_0__img_2 = document.getElementById("panel_0__img_2");
 var panel_0__img_3 = document.getElementById("panel_0__img_3");
+var panel_0__text = document.getElementById("panel_0__text");
 
 
 var panel_left = document.getElementById("panel_left");
@@ -45,6 +46,17 @@ function showLeftRight() {
     panel_right.classList.remove("hide");
 }
 
+function ending() {
+    if (panel_right__chosen == true) {
+        panel_0__img_3.classList.remove("hide");
+        panel_0__text.innerHTML = "Sometimes you bake a cake, and sometimes you end up in eternal suffering. But what you gonna do? lol";
+    } else {
+        panel_0__img_2.classList.remove("hide");
+        panel_0__text.innerHTML = "Yay you baked a cake";
+    }
+}
+
+
 //Scene 1
 panel_0__img_1.addEventListener("click", function () {
     hideAll();
@@ -61,6 +73,9 @@ panel_left__img_1.addEventListener("click", function () {
     showLeftRight();
     panel_left__img_2.classList.remove("hide");
     panel_right__img_2.classList.remove("hide");
+    panel_left__text.innerHTML = "Salt, Vanilla Extract, and Butter";
+    panel_right__text.innerHTML = "Salt, Blood, and Java";
+
 });
 
 panel_right__img_1.addEventListener("click", function () {
@@ -69,20 +84,18 @@ panel_right__img_1.addEventListener("click", function () {
     showLeftRight();
     panel_left__img_2.classList.remove("hide");
     panel_right__img_2.classList.remove("hide");
+    panel_left__text.innerHTML = "Salt, Vanilla Extract, and Butter";
+    panel_right__text.innerHTML = "Salt, Blood, and Java";
 });
 
 
 //Scene 3
 panel_left__img_2.addEventListener("click", function () {
     hideAll();
-    
+
     panel_0.classList.remove("hide");
-    if(panel_right__chosen == true) {
-        panel_0__img_3.classList.remove("hide");
-    } else {
-        panel_0__img_2.classList.remove("hide");
-    }
-    
+    ending();
+
 });
 
 panel_right__img_2.addEventListener("click", function () {
@@ -90,9 +103,26 @@ panel_right__img_2.addEventListener("click", function () {
     hideAll();
 
     panel_0.classList.remove("hide");
-    if(panel_right__chosen == true) {
-        panel_0__img_3.classList.remove("hide");
-    } else {
-        panel_0__img_2.classList.remove("hide");
-    }
+    ending();
 });
+
+//Restart
+panel_0__img_2.addEventListener("click", function () {
+    hideAll();
+    panel_0.classList.remove("hide");
+    panel_0__img_1.classList.remove("hide");
+    resetText();
+});
+
+panel_0__img_3.addEventListener("click", function () {
+    hideAll();
+    panel_0.classList.remove("hide");
+    panel_0__img_1.classList.remove("hide");
+    resetText();
+});
+
+function resetText() {
+    panel_0__text.innerHTML = "It's time to bake a cake! Click to advance!";
+    panel_left__text.innerHTML = "Flour, Eggs, and Baking Powder";
+    panel_right__text.innerHTML = "Flour, Candles, and a Pentagram";
+}
