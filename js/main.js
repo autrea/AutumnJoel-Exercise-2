@@ -40,6 +40,11 @@ function hideAll() {
     panel_right.classList.add("hide");
 }
 
+function showLeftRight() {
+    panel_left.classList.remove("hide");
+    panel_right.classList.remove("hide");
+}
+
 //Scene 1
 panel_0__img_1.addEventListener("click", function () {
     hideAll();
@@ -52,13 +57,42 @@ panel_0__img_1.addEventListener("click", function () {
 
 //Scene 2
 panel_left__img_1.addEventListener("click", function () {
-
+    hideAll();
+    showLeftRight();
+    panel_left__img_2.classList.remove("hide");
+    panel_right__img_2.classList.remove("hide");
 });
 
-
+panel_right__img_1.addEventListener("click", function () {
+    panel_right__chosen = true;
+    hideAll();
+    showLeftRight();
+    panel_left__img_2.classList.remove("hide");
+    panel_right__img_2.classList.remove("hide");
+});
 
 
 //Scene 3
 panel_left__img_2.addEventListener("click", function () {
+    hideAll();
+    
+    panel_0.classList.remove("hide");
+    if(panel_right__chosen == true) {
+        panel_0__img_3.classList.remove("hide");
+    } else {
+        panel_0__img_2.classList.remove("hide");
+    }
+    
+});
 
+panel_right__img_2.addEventListener("click", function () {
+    panel_right__chosen = true;
+    hideAll();
+
+    panel_0.classList.remove("hide");
+    if(panel_right__chosen == true) {
+        panel_0__img_3.classList.remove("hide");
+    } else {
+        panel_0__img_2.classList.remove("hide");
+    }
 });
